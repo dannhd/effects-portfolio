@@ -2,6 +2,7 @@ const menuToggle = document.querySelector('[data-menu-toggle]');
 const menu = document.querySelector('[data-menu]');
 const heroBrandGlow = document.querySelector('.hero-brand-glow');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobileViewport = window.matchMedia('(max-width: 780px)').matches;
 
 document.querySelectorAll('a[href="#inicio"]').forEach((homeLink) => {
   homeLink.addEventListener('click', (event) => {
@@ -39,7 +40,7 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: isMobileViewport ? 0.05 : 0.12 });
 
 revealItems.forEach((item) => revealObserver.observe(item));
 
@@ -62,7 +63,7 @@ const titleRevealObserver = new IntersectionObserver((entries) => {
     entry.target.classList.add('is-scroll-revealed');
     titleRevealObserver.unobserve(entry.target);
   });
-}, { threshold: 0.22 });
+}, { threshold: isMobileViewport ? 0.08 : 0.22 });
 
 scrollTitles.forEach((title) => titleRevealObserver.observe(title));
 
@@ -76,7 +77,10 @@ const statsCascadeObserver = new IntersectionObserver((entries) => {
     entry.target.classList.add('is-cascade-visible');
     statsCascadeObserver.unobserve(entry.target);
   });
-}, { threshold: 0.16 });
+}, {
+  threshold: isMobileViewport ? 0.02 : 0.16,
+  rootMargin: isMobileViewport ? '0px 0px -8% 0px' : '0px',
+});
 
 statsCascades.forEach((section) => statsCascadeObserver.observe(section));
 
@@ -135,7 +139,9 @@ particleField.id = 'particle-field';
 particleField.setAttribute('aria-hidden', 'true');
 document.body.prepend(particleField);
 
-for (let index = 0; index < 68; index += 1) {
+const particleCount = isMobileViewport ? 28 : 68;
+
+for (let index = 0; index < particleCount; index += 1) {
   const particle = document.createElement('span');
   const dot = document.createElement('i');
   const particleData = {

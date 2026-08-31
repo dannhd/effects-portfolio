@@ -54,6 +54,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  html {
+    overflow-x: clip;
+  }
 }
 
 body {
@@ -89,6 +96,7 @@ body::before {
   background-image: linear-gradient(rgba(215,255,95,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(215,255,95,.02) 1px,transparent 1px);
   background-size: 56px 56px;
   mask-image: linear-gradient(#000,transparent 78%);
+  -webkit-mask-image: linear-gradient(#000,transparent 78%);
 }
 
 /* Partículas aleatorias, con brillo y movimiento propios. */
@@ -341,6 +349,7 @@ button {
   border-color: rgba(184, 255, 121, .38);
   box-shadow: 0 0 30px rgba(129, 255, 61, .16), inset 0 0 20px rgba(129, 255, 61, .05);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .button:hover {
@@ -1525,6 +1534,7 @@ em {
   font: 600 .9rem/1.08 var(--sans);
   letter-spacing: -.025em;
   backdrop-filter: blur(.45rem);
+  -webkit-backdrop-filter: blur(.45rem);
 }
 
 .experience-option b {
@@ -1747,6 +1757,7 @@ em {
   color: rgba(255, 255, 255, .88);
   font: 600 clamp(.34rem, .7vw, .48rem) var(--sans);
   backdrop-filter: blur(.3rem);
+  -webkit-backdrop-filter: blur(.3rem);
   transition: opacity .35s ease, transform .35s ease;
 }
 
@@ -4088,6 +4099,114 @@ main .hero.section-shell {
   }
 }
 
+/* En móvil el contenido participa del scroll principal: sin carruseles ni cajas internas. */
+@media (max-width: 780px) {
+  .reveal {
+    transition-duration: .24s;
+  }
+
+  .hero-title-base,
+  .hero-title-overlay {
+    animation-duration: .1s !important;
+  }
+
+  [data-scroll-title] {
+    filter: blur(8px);
+    transform: translateY(1rem);
+  }
+
+  [data-scroll-title].is-scroll-revealed {
+    animation-duration: .26s;
+  }
+
+  [data-stats-cascade] .stats-placeholder > *,
+  [data-stats-cascade] .effects-gallery > * {
+    filter: blur(8px);
+    transform: translate3d(1.25rem, 0, 0);
+  }
+
+  [data-stats-cascade].is-cascade-visible .stats-placeholder > *,
+  [data-stats-cascade].is-cascade-visible .effects-gallery > * {
+    animation-duration: .34s;
+  }
+
+  [data-stats-cascade].is-cascade-visible .stats-placeholder > :nth-child(1) { animation-delay: 0s; }
+  [data-stats-cascade].is-cascade-visible .stats-placeholder > :nth-child(2) { animation-delay: .06s; }
+  [data-stats-cascade].is-cascade-visible .stats-placeholder > :nth-child(3) { animation-delay: .12s; }
+  [data-stats-cascade].is-cascade-visible .effects-gallery > :nth-child(1) { animation-delay: .16s; }
+  [data-stats-cascade].is-cascade-visible .effects-gallery > :nth-child(2) { animation-delay: .22s; }
+  [data-stats-cascade].is-cascade-visible .effects-gallery > :nth-child(3) { animation-delay: .28s; }
+
+  .benefits .feature-carousel {
+    min-height: 0;
+    height: auto;
+    overflow: visible;
+  }
+
+  .benefits .statistics-slide {
+    position: relative;
+    inset: auto;
+    display: block;
+    height: auto;
+    padding: 1.25rem 0;
+    overflow: visible !important;
+  }
+
+  .benefits .statistics-slide .results-panel {
+    display: block;
+    height: auto;
+    min-height: 0;
+    padding: 0 1rem;
+    overflow: visible;
+  }
+
+  .benefits .stats-placeholder {
+    width: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .views-stat-card,
+  .stats-impact,
+  .featured-effect-card,
+  .effects-gallery {
+    width: 100%;
+  }
+
+  .featured-effect-card {
+    grid-template-columns: minmax(5.75rem, 7rem) minmax(0, 1fr);
+  }
+
+  .effects-gallery {
+    margin-top: 1.25rem;
+  }
+
+  .services .service-scroller {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: visible;
+    scroll-snap-type: none;
+    gap: 2rem;
+    margin: 3rem 0 0;
+    padding: 4.5rem 0 0;
+  }
+
+  .services .service-card {
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    scroll-snap-align: none;
+  }
+
+  .services .service-shape {
+    top: -5.25rem;
+  }
+}
+
 /* Resultados se apilan desde la derecha: llegada horizontal, blur y asentamiento. */
 [data-stats-cascade] .stats-placeholder > *,
 [data-stats-cascade] .effects-gallery > * {
@@ -4507,7 +4626,43 @@ main .hero.section-shell {
 }
 
 @media (max-width: 780px) {
+  .statistics-slide {
+    overflow-x: hidden;
+  }
+
   .benefits .feature-carousel {
     min-height: 66rem;
+  }
+}
+
+/* Alternativa visual estable para navegadores sin soporte de cristal esmerilado. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header,
+  .featured-effect-card,
+  .effect-gallery-card {
+    background-color: #132019;
+  }
+
+  .button:not(.button-primary) {
+    background-color: #112218;
+  }
+}
+
+/* Ritmo vertical: resultados y Servicios conservan la misma cercanía que Planes y Agenda. */
+@media (min-width: 781px) {
+  .benefits {
+    padding-bottom: 3rem;
+  }
+
+  .benefits .feature-carousel {
+    min-height: 34rem;
+  }
+
+  .benefits .statistics-slide .results-panel {
+    justify-content: flex-end;
+  }
+
+  .services {
+    padding-top: 5.25rem;
   }
 }
