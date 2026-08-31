@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="LUMINY crea efectos, filtros y experiencias interactivas personalizadas para marcas, artistas y creadores."
+      content="LOOPLOP crea efectos, filtros y experiencias interactivas personalizadas para marcas, artistas y creadores."
     />
-    <title>LUMINY — Tu idea en movimiento</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <title>LOOPLOP — Tu idea en movimiento</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+      window.addEventListener("pageshow", () => window.scrollTo(0, 0));
+    </script>
     <script src="js/main.js" defer></script>
   </head>
   <body>
@@ -22,9 +21,9 @@
 
     <header class="site-header" data-header>
       <div class="nav-center">
-      <a class="brand" href="#inicio" aria-label="luminy, inicio">
+        <a class="brand" href="#inicio" aria-label="Looplop, inicio">
           <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span>luminy<span class="brand-dot">.</span></span>
+          <span>Looplop<span class="brand-dot">.</span></span>
         </a>
 
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-toggle>
@@ -37,7 +36,7 @@
           <a href="#servicios">Servicios</a>
         </nav>
       </div>
-      <a class="button button-small header-cta" href="#contacto">Cuéntanos tu idea <span aria-hidden="true">↗</span></a>
+      <a class="button button-small header-cta" href="#contacto">Cuéntanos tu idea</a>
     </header>
 
     <main id="contenido">
@@ -47,23 +46,29 @@
           <div class="hero-brand-glow">
             <div class="hero-brand-lockup">
               <div class="hero-text-lockup">
-                <h1 aria-label="luminy. — Tu idea en movimiento">
-                  <span class="hero-title-base" aria-hidden="true">luminy<span class="hero-title-dot">.</span></span>
+                <h1 aria-label="Looplop. — Tu idea en movimiento">
+                  <span class="hero-title-base" aria-hidden="true">Looplop<span class="hero-title-dot">.</span></span>
                   <span class="hero-title-overlay" aria-hidden="true">TU IDEA EN MOVIMIENTO</span>
                 </h1>
               </div>
+              <div class="hero-loader" aria-hidden="true"><div class="kreathora-loader"></div></div>
             </div>
           </div>
           <p class="hero-description">
             Creamos efectos y minijuegos personalizados para TikTok, pensados para marcas, artistas y creadores que buscan conectar con su audiencia de una forma más interactiva.
           </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contacto">Hablemos</a>
+            <a class="button button-hero-secondary" href="#servicios">Ver servicios</a>
+          </div>
+          <p class="hero-proof">Experiencias interactivas para marcas, artistas y creadores.</p>
         </div>
       </section>
 
       <section class="benefits section-shell" id="beneficios">
-        <h2 class="benefits-heading">Cuando mirar ya no es suficiente</h2>
-        <div class="feature-carousel reveal" aria-label="Áreas de Luminy">
-          <article class="feature-slide feature-results statistics-slide is-active">
+        <h2 class="benefits-pretitle" data-scroll-title>Cuando mirar ya no es suficiente</h2>
+        <div class="feature-carousel reveal" aria-label="Áreas de Looplop">
+          <article class="feature-slide feature-results statistics-slide is-active" data-stats-cascade>
             <div class="results-copy statistics-copy">
               <h3>Estadísticas</h3>
               <div class="growth-chart" role="img" aria-label="Gráfica de crecimiento con una línea ascendente animada">
@@ -75,13 +80,81 @@
               </div>
             </div>
             <div class="results-panel">
-              <div class="metric-grid" aria-label="Métricas destacadas">
-                <div class="metric"><span>◉</span><strong>2,957,498</strong><small>Visualizaciones</small></div>
-                <div class="metric"><span>✦</span><strong>228,331</strong><small>Pruebas</small></div>
-                <div class="metric"><span>♡</span><strong>154,648</strong><small>Me gusta</small></div>
-                <div class="metric metric-wide"><span>➤</span><strong>3,352</strong><small>Publicaciones</small></div>
-                <div class="metric metric-wide"><span>↗</span><strong>2,553</strong><small>Veces compartido</small></div>
+              <div class="stats-placeholder" aria-label="Estadísticas y resultados">
+                <div class="outer views-stat-card">
+                  <div class="dot" aria-hidden="true"></div>
+                  <div class="card views-card">
+                    <div class="ray" aria-hidden="true"></div>
+                    <div class="text">3,094,970</div>
+                    <div class="views-label">Visualizaciones</div>
+                    <div class="line topl" aria-hidden="true"></div>
+                    <div class="line leftl" aria-hidden="true"></div>
+                    <div class="line bottoml" aria-hidden="true"></div>
+                    <div class="line rightl" aria-hidden="true"></div>
+                  </div>
+                </div>
+                <aside class="stats-impact" aria-label="Impacto medible">
+                  <div class="stats-impact-heading">
+                    <span class="stats-impact-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none"><path d="m4 16 5-5 3 3 7-8M15 6h4v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                    </span>
+                    <h3>Impacto medible</h3>
+                  </div>
+                  <p>Estas estadísticas reflejan el alcance e interacción real que han generado nuestros filtros. Cada número muestra cómo una experiencia creativa puede convertirse en participación, contenido y difusión.</p>
+                  <ul class="engagement-list" aria-label="Métricas de interacción">
+                    <li><span><b>154,648</b>Me gusta</span></li>
+                    <li><span><b>228,331</b>Pruebas</span></li>
+                    <li><span><b>3,352</b>Publicaciones</span></li>
+                    <li><span><b>2,553</b>Veces compartido</span></li>
+                  </ul>
+                </aside>
+                <article class="featured-effect-card">
+                  <img src="assets/images/qr-sopa-de-letras.png" alt="Código QR para probar el filtro Juego sopa de letras" />
+                  <div class="featured-effect-copy">
+                    <h4>Juego sopa de letras</h4>
+                    <p>Uno de los filtros más vistos que hemos creado.</p>
+                    <div class="featured-effect-metrics" aria-label="Resultados del filtro">
+                      <span><b>1.1M+</b>Visualizaciones</span>
+                      <span><b>77K+</b>Pruebas</span>
+                      <span><b>1.2K+</b>Publicaciones</span>
+                      <span><b>786</b>Creadores</span>
+                    </div>
+                    <a href="https://vt.tiktok.com/ZSVS7QFDL/" target="_blank" rel="noopener noreferrer">Probar filtro</a>
+                  </div>
+                </article>
               </div>
+              <section class="effects-gallery" aria-label="Más efectos destacados">
+                <article class="effect-gallery-card">
+                  <img src="assets/images/qr-enredao.png" alt="Código QR del filtro Enredao" />
+                  <div class="effect-gallery-copy">
+                    <h4>Enredao</h4>
+                    <div class="effect-gallery-metrics">
+                      <span><b>1,052,954</b>Visualizaciones</span><span><b>25,913</b>Pruebas</span>
+                      <span><b>563</b>Publicaciones</span><span><b>70,114</b>Me gusta</span>
+                    </div>
+                  </div>
+                </article>
+                <article class="effect-gallery-card">
+                  <img src="assets/images/qr-baile-capibara.png" alt="Código QR del filtro El baile del capibara" />
+                  <div class="effect-gallery-copy">
+                    <h4>El baile del capibara</h4>
+                    <div class="effect-gallery-metrics">
+                      <span><b>152,801</b>Visualizaciones</span><span><b>141,011</b>Pruebas</span>
+                      <span><b>1,318</b>Publicaciones</span><span><b>4,295</b>Me gusta</span>
+                    </div>
+                  </div>
+                </article>
+                <article class="effect-gallery-card">
+                  <img src="assets/images/qr-pegale-al-topo.png" alt="Código QR del filtro Pégale al topo" />
+                  <div class="effect-gallery-copy">
+                    <h4>Pégale al topo</h4>
+                    <div class="effect-gallery-metrics">
+                      <span><b>128,279</b>Visualizaciones</span><span><b>10,121</b>Pruebas</span>
+                      <span><b>417</b>Publicaciones</span><span><b>3,295</b>Me gusta</span>
+                    </div>
+                  </div>
+                </article>
+              </section>
               <div class="results-case">
                 <img class="case-qr" src="assets/images/qr-sopa-de-letras.png" alt="Código QR para probar el filtro Juego sopa de letras" />
                 <div>
@@ -145,11 +218,11 @@
 
       <section class="services section-shell" id="servicios">
         <div class="services-heading reveal">
-          <h2>La idea marca<br />el nivel de <em>interacción.</em></h2>
+          <h2 data-scroll-title>La idea marca<br />el nivel de <em>interacción</em></h2>
         </div>
         <div class="service-scroller" aria-label="Niveles de servicio">
           <article class="service-card service-visual reveal">
-            <div class="service-shape shape-visual" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="service-shape shape-visual" aria-hidden="true"><img src="assets/spark-symbol-clean-alpha.png" alt="" /></div>
             <h3>Spark</h3>
             <p class="service-promise">Haz que tu campaña tenga una identidad visual propia.</p>
             <ul>
@@ -162,11 +235,10 @@
             </ul>
             <div class="service-footer">
               <span class="service-price">$150</span>
-              <button class="service-select" type="button" data-plan-select="Spark">Seleccionar</button>
             </div>
           </article>
           <article class="service-card service-interactive reveal">
-            <div class="service-shape shape-interactive" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <div class="service-shape shape-interactive" aria-hidden="true"><img src="assets/spark-rocket.png" alt="" /></div>
             <h3>Motion</h3>
             <p class="service-promise">Haz que tu audiencia participe, no solo observe.</p>
             <ul>
@@ -181,11 +253,10 @@
             </ul>
             <div class="service-footer">
               <span class="service-price">$350</span>
-              <button class="service-select" type="button" data-plan-select="Motion">Seleccionar</button>
             </div>
           </article>
           <article class="service-card service-game reveal">
-            <div class="service-shape shape-game" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="service-shape shape-game" aria-hidden="true"><img src="assets/core-bulbs.png" alt="" /></div>
             <h3>Core</h3>
             <p class="service-promise">Experiencias diseñadas para despertar curiosidad, generar interacción y llegar más lejos.</p>
             <ul>
@@ -200,7 +271,6 @@
             </ul>
             <div class="service-footer">
               <span class="service-price">$400</span>
-              <button class="service-select" type="button" data-plan-select="Core">Seleccionar</button>
             </div>
           </article>
         </div>
@@ -208,20 +278,16 @@
 
       <section class="contact section-shell" id="contacto">
         <div class="contact-glow"></div>
-        <p class="eyebrow"><span></span> LET'S BUILD SOMETHING / 05</p>
-        <h2>¿Qué pasaría si tu audiencia pudiera <em>entrar en tu idea?</em></h2>
+        <h2 data-scroll-title>¿Qué pasaría si tu audiencia pudiera <em>entrar en tu idea?</em></h2>
         <p>Contanos qué querés lanzar. Vemos juntos el formato, la interacción y el camino para hacerlo realidad.</p>
-        <button class="button button-primary button-contact is-disabled" type="button" disabled>
-          WhatsApp próximamente <span aria-hidden="true">↗</span>
-        </button>
-        <small>El acceso a WhatsApp Business se conectará al definir el número de contacto.</small>
+        <button class="button button-primary button-contact" type="button">Agenda tu cita</button>
       </section>
     </main>
 
     <footer class="site-footer section-shell">
-      <a class="brand" href="#inicio" aria-label="Volver al inicio"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>luminy<span class="brand-dot">.</span></span></a>
+      <a class="brand" href="#inicio" aria-label="Volver al inicio"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Looplop<span class="brand-dot">.</span></span></a>
       <p>Experiencias digitales para marcas, artistas y creadores.</p>
-      <p>© <span data-year></span> LUMINY. Nombre provisional.</p>
+      <p>© <span data-year></span> LOOPLOP.</p>
     </footer>
   </body>
 </html>

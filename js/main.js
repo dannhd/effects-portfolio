@@ -1,6 +1,7 @@
 const menuToggle = document.querySelector('[data-menu-toggle]');
 const menu = document.querySelector('[data-menu]');
 const heroBrandGlow = document.querySelector('.hero-brand-glow');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 document.querySelectorAll('a[href="#inicio"]').forEach((homeLink) => {
   homeLink.addEventListener('click', (event) => {
@@ -41,6 +42,43 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 revealItems.forEach((item) => revealObserver.observe(item));
+
+let lastScrollPosition = window.scrollY;
+let isScrollingDown = false;
+let hasUserScrolled = false;
+window.addEventListener('scroll', () => {
+  const currentPosition = window.scrollY;
+  if (currentPosition !== lastScrollPosition) hasUserScrolled = true;
+  isScrollingDown = currentPosition > lastScrollPosition;
+  lastScrollPosition = currentPosition;
+}, { passive: true });
+
+const scrollTitles = document.querySelectorAll('[data-scroll-title]');
+const titleRevealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting || entry.target.dataset.revealed) return;
+    if (hasUserScrolled && !isScrollingDown) return;
+    entry.target.dataset.revealed = 'true';
+    entry.target.classList.add('is-scroll-revealed');
+    titleRevealObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.22 });
+
+scrollTitles.forEach((title) => titleRevealObserver.observe(title));
+
+// Resultados entra como una pila horizontal: del extremo derecho al izquierdo.
+const statsCascades = document.querySelectorAll('[data-stats-cascade]');
+const statsCascadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting || entry.target.dataset.cascadeRevealed) return;
+    if (hasUserScrolled && !isScrollingDown) return;
+    entry.target.dataset.cascadeRevealed = 'true';
+    entry.target.classList.add('is-cascade-visible');
+    statsCascadeObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.16 });
+
+statsCascades.forEach((section) => statsCascadeObserver.observe(section));
 
 const benefitCards = document.querySelectorAll('.benefit-card');
 benefitCards.forEach((card) => {
@@ -88,7 +126,6 @@ serviceCards.forEach((card) => {
 });
 
 const benefitsSection = document.querySelector('.benefits');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let glowFrame;
 let particleFrame;
 const particles = [];
