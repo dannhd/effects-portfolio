@@ -65,18 +65,14 @@ benefitCards.forEach((card) => {
 
 const featureSlides = [...document.querySelectorAll('.feature-slide')];
 const featureNext = document.querySelector('.feature-next');
-const resultsNext = document.querySelector('[data-results-next]');
 let activeFeatureSlide = 0;
 
-const showNextFeatureSlide = () => {
+featureNext?.addEventListener('click', () => {
   activeFeatureSlide = (activeFeatureSlide + 1) % featureSlides.length;
   featureSlides.forEach((slide, index) => {
     slide.classList.toggle('is-active', index === activeFeatureSlide);
   });
-};
-
-featureNext?.addEventListener('click', showNextFeatureSlide);
-resultsNext?.addEventListener('click', showNextFeatureSlide);
+});
 
 const serviceCards = document.querySelectorAll('.service-card');
 serviceCards.forEach((card) => {
@@ -96,38 +92,6 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 let glowFrame;
 let particleFrame;
 const particles = [];
-
-const statisticsSlide = document.querySelector('.statistics-slide');
-const statisticNumbers = [...document.querySelectorAll('[data-count]')];
-
-if (statisticsSlide && statisticNumbers.length && !reduceMotion) {
-  const numberFormatter = new Intl.NumberFormat('en-US');
-  const countObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-
-      statisticNumbers.forEach((number, index) => {
-        const target = Number(number.dataset.count);
-        const startTime = performance.now() + (index * 55);
-        const duration = 780;
-
-        const updateNumber = (time) => {
-          const progress = Math.min(1, Math.max(0, (time - startTime) / duration));
-          const easedProgress = 1 - ((1 - progress) ** 3);
-          number.textContent = numberFormatter.format(Math.round(target * easedProgress));
-
-          if (progress < 1) window.requestAnimationFrame(updateNumber);
-        };
-
-        window.requestAnimationFrame(updateNumber);
-      });
-
-      countObserver.unobserve(entry.target);
-    });
-  }, { threshold: .22 });
-
-  countObserver.observe(statisticsSlide);
-}
 
 const particleField = document.createElement('div');
 particleField.id = 'particle-field';
