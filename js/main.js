@@ -139,7 +139,7 @@ particleField.id = 'particle-field';
 particleField.setAttribute('aria-hidden', 'true');
 document.body.prepend(particleField);
 
-const particleCount = isMobileViewport ? 28 : 68;
+const particleCount = isMobileViewport ? 0 : 68;
 
 for (let index = 0; index < particleCount; index += 1) {
   const particle = document.createElement('span');
@@ -165,7 +165,7 @@ for (let index = 0; index < particleCount; index += 1) {
 const updateBenefitsGlow = () => {
   glowFrame = undefined;
 
-  if (!benefitsSection || reduceMotion) return;
+  if (!benefitsSection || reduceMotion || isMobileViewport) return;
 
   const bounds = benefitsSection.getBoundingClientRect();
   const viewportCenter = window.innerHeight / 2;
@@ -180,9 +180,11 @@ const requestBenefitsGlowUpdate = () => {
   if (!glowFrame) glowFrame = window.requestAnimationFrame(updateBenefitsGlow);
 };
 
-updateBenefitsGlow();
-window.addEventListener('scroll', requestBenefitsGlowUpdate, { passive: true });
-window.addEventListener('resize', requestBenefitsGlowUpdate);
+if (!isMobileViewport) {
+  updateBenefitsGlow();
+  window.addEventListener('scroll', requestBenefitsGlowUpdate, { passive: true });
+  window.addEventListener('resize', requestBenefitsGlowUpdate);
+}
 
 const updateParticleField = () => {
   particleFrame = undefined;
@@ -198,9 +200,11 @@ const requestParticleFieldUpdate = () => {
   if (!particleFrame) particleFrame = window.requestAnimationFrame(updateParticleField);
 };
 
-updateParticleField();
-window.addEventListener('scroll', requestParticleFieldUpdate, { passive: true });
-window.addEventListener('resize', requestParticleFieldUpdate);
+if (!isMobileViewport) {
+  updateParticleField();
+  window.addEventListener('scroll', requestParticleFieldUpdate, { passive: true });
+  window.addEventListener('resize', requestParticleFieldUpdate);
+}
 
 const chartCanvas = document.querySelector('.chart-canvas');
 
@@ -219,7 +223,7 @@ if (chartCanvas) {
     const bounds = chartCanvas.getBoundingClientRect();
     if (!bounds.width || !bounds.height) return;
 
-    const pixelRatio = window.devicePixelRatio || 1;
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, isMobileViewport ? 1.5 : 2);
     const width = Math.round(bounds.width);
     const height = Math.round(bounds.height);
 
@@ -267,7 +271,9 @@ if (chartCanvas) {
     context.stroke();
     context.shadowBlur = 0;
 
-    if (!reduceMotion) window.requestAnimationFrame(drawGrowthChart);
+    // En móviles el gráfico se dibuja una sola vez: evita un bucle de 60 fps
+    // que degrada el desplazamiento, especialmente en Safari iOS.
+    if (!reduceMotion && !isMobileViewport) window.requestAnimationFrame(drawGrowthChart);
   };
 
   drawGrowthChart();
