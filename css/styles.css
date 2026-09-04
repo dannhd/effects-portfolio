@@ -4994,7 +4994,7 @@ main .hero.section-shell {
 }
 
 .views-stat-card .text {
-  color: var(--acid);
+  color: #f4f6f1;
   background: none;
   -webkit-background-clip: initial;
   background-clip: initial;
