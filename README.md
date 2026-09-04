@@ -1,3 +1,3 @@
-# effects-portfolio
+# Looplup
 
-Sitio web oficial de LUMINY — Tu idea en movimiento. Experiencias interactivas, efectos y minijuegos para marcas y creadores.
+Sitio web oficial de Looplup: experiencias interactivas, efectos y minijuegos para marcas y creadores.
