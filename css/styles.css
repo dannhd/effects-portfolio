@@ -243,6 +243,13 @@ button {
   font-size: 1.42rem;
 }
 
+/* Isologo oficial en blanco, integrado directamente sobre el fondo del sitio. */
+.brand-logo {
+  display: block;
+  width: clamp(8.5rem, 12vw, 11.5rem);
+  height: auto;
+}
+
 .brand-wordmark {
   display: inline-flex;
   align-items: flex-end;
@@ -263,37 +270,6 @@ button {
   font-size: 1em;
   line-height: 0;
   flex: 0 0 auto;
-}
-
-.brand-mark {
-  position: relative;
-  width: 1.8rem;
-  height: 1.8rem;
-  display: inline-block;
-}
-
-.brand-mark i {
-  position: absolute;
-  border: 2px solid var(--acid);
-  border-radius: 50%;
-  width: .7rem;
-  height: .7rem;
-}
-
-.brand-mark i:nth-child(1) {
-  left: 0;
-  top: 0;
-}
-
-.brand-mark i:nth-child(2) {
-  right: 0;
-  bottom: 0;
-}
-
-.brand-mark i:nth-child(3) {
-  left: .43rem;
-  top: .43rem;
-  background: var(--acid);
 }
 
 /* Enlaces de las secciones principales. */
@@ -2301,6 +2277,7 @@ em {
   font: 700 2.35rem var(--sans);
   letter-spacing: -.06em;
   color: var(--acid);
+  text-align: center;
 }
 
 .service-select {
@@ -2389,6 +2366,18 @@ em {
 .site-footer p:last-child {
   font-family: var(--mono);
   font-size: .55rem;
+}
+
+.footer-copyright {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.footer-copyright-logo {
+  display: block;
+  width: 4.2rem;
+  height: auto;
 }
 
 /* 10. Motion */
@@ -5057,19 +5046,6 @@ main .hero.section-shell {
   width: min(100%, 52rem);
 }
 
-.hero-kicker {
-  width: fit-content;
-  margin: 0 auto 1.35rem;
-  padding: .45rem .75rem;
-  border: 1px solid rgba(215, 255, 95, .3);
-  border-radius: 999px;
-  background: rgba(215, 255, 95, .06);
-  color: var(--acid);
-  font: 400 .58rem/1 var(--mono);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
 .hero-statement {
   max-width: 15ch;
   margin-inline: auto;
@@ -5127,10 +5103,6 @@ main .hero.section-shell {
 }
 
 @media (max-width: 780px) {
-  .hero-kicker {
-    margin-bottom: 1rem;
-  }
-
   .hero-statement {
     max-width: 14ch;
     font-size: clamp(2.45rem, 10vw, 3.35rem);
@@ -5142,8 +5114,9 @@ main .hero.section-shell {
   }
 
   .hero-pong {
-    top: 6.2rem;
-    left: calc(50% - 1.15rem);
+    /* La posición la controla main.js desde la esquina del hero. */
+    top: 0;
+    left: 0;
     width: 2.3rem;
     opacity: .9;
     will-change: auto;
@@ -5523,6 +5496,42 @@ main .hero.section-shell {
   text-transform: uppercase;
 }
 
+/* Vista previa en video del filtro Pégale al topo. */
+.filter-card__back--video::before {
+  display: none;
+}
+
+.filter-card__back--video::after {
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(4, 9, 6, .08) 28%, rgba(4, 9, 6, .76) 100%);
+}
+
+.filter-card__back--video .filter-preview-video {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.filter-card__back--video .filter-preview-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+  margin-top: auto;
+  padding: 1.15rem;
+}
+
+.filter-card__back--video .filter-preview-copy p {
+  text-shadow: 0 .12rem .7rem rgba(0, 0, 0, .8);
+}
+
 .filter-card > .filter-card__inner > .filter-card__front {
   z-index: 2;
   display: flex;
@@ -5611,11 +5620,6 @@ main .hero.section-shell {
     touch-action: manipulation;
   }
 
-  /* En táctil la información se muestra en el mismo toque, sin que la
-     cara anterior pueda verse durante una transición 3D. */
-  .filter-card__inner {
-    transition: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
