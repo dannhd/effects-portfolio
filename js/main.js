@@ -1,6 +1,8 @@
 const menuToggle = document.querySelector('[data-menu-toggle]');
 const menu = document.querySelector('[data-menu]');
 const heroBrandGlow = document.querySelector('.hero-brand-glow');
+const hero = document.querySelector('.hero');
+const heroPong = document.querySelector('.hero-pong');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isMobileViewport = window.matchMedia('(max-width: 780px)').matches;
 
@@ -31,6 +33,94 @@ menu?.querySelectorAll('a').forEach((link) => {
     menu?.classList.remove('is-open');
   });
 });
+
+// El acento del hero recorre toda la portada como una pelota de ping-pong.
+// Se pausa fuera de pantalla y en móvil para preservar la fluidez del desplazamiento.
+if (hero && heroPong && !reduceMotion && !isMobileViewport) {
+  let pongFrame;
+  let pongLastTime;
+  let pongX = 0;
+  let pongY = hero.clientHeight * .18;
+  let pongVelocityX = .36;
+  let pongVelocityY = .24;
+  let pongImpact = 0;
+  let pongImpactAxis = 'x';
+  let pongRotation = 0;
+  let pongSpin = .11;
+  let pongTargetSpin = .11;
+  let pongActive = false;
+
+  const registerPongImpact = (axis, spinDirection) => {
+    pongImpact = 1;
+    pongImpactAxis = axis;
+    pongTargetSpin = spinDirection * .2;
+  };
+
+  const animatePong = (time) => {
+    if (!pongActive) return;
+
+    const elapsed = Math.min(32, time - (pongLastTime ?? time));
+    pongLastTime = time;
+    const maxX = Math.max(0, hero.clientWidth - heroPong.offsetWidth);
+    const maxY = Math.max(0, hero.clientHeight - heroPong.offsetHeight);
+    pongX += pongVelocityX * elapsed;
+    pongY += pongVelocityY * elapsed;
+
+    if (pongX >= maxX) {
+      pongX = maxX;
+      pongVelocityX *= -1;
+      registerPongImpact('x', 1);
+    } else if (pongX <= 0) {
+      pongX = 0;
+      pongVelocityX *= -1;
+      registerPongImpact('x', -1);
+    }
+
+    if (pongY >= maxY) {
+      pongY = maxY;
+      pongVelocityY *= -1;
+      registerPongImpact('y', -1);
+    } else if (pongY <= 0) {
+      pongY = 0;
+      pongVelocityY *= -1;
+      registerPongImpact('y', 1);
+    }
+
+    // El golpe se conserva unos instantes para que la deformación sea perceptible.
+    pongImpact = Math.max(0, pongImpact - (elapsed / 260));
+    const squash = (pongImpact ** .65) * .38;
+    const scaleX = pongImpactAxis === 'x' ? 1 - squash : 1 + (squash * .55);
+    const scaleY = pongImpactAxis === 'y' ? 1 - squash : 1 + (squash * .55);
+    const spinSmoothing = Math.min(1, elapsed / 220);
+    pongSpin += (pongTargetSpin - pongSpin) * spinSmoothing;
+    pongRotation = (pongRotation + (pongSpin * elapsed)) % 360;
+
+    heroPong.style.transform = `translate3d(${pongX.toFixed(1)}px, ${pongY.toFixed(1)}px, 0) rotate(${pongRotation.toFixed(1)}deg) scale(${scaleX.toFixed(3)}, ${scaleY.toFixed(3)})`;
+    pongFrame = window.requestAnimationFrame(animatePong);
+  };
+
+  const pongObserver = new IntersectionObserver(([entry]) => {
+    pongActive = entry.isIntersecting && !document.hidden;
+    if (pongActive && !pongFrame) pongFrame = window.requestAnimationFrame(animatePong);
+    if (!pongActive && pongFrame) {
+      window.cancelAnimationFrame(pongFrame);
+      pongFrame = undefined;
+      pongLastTime = undefined;
+    }
+  }, { threshold: .05 });
+
+  pongObserver.observe(hero);
+  document.addEventListener('visibilitychange', () => {
+    pongActive = !document.hidden && hero.getBoundingClientRect().bottom > 0 && hero.getBoundingClientRect().top < window.innerHeight;
+    if (pongActive && !pongFrame) {
+      pongFrame = window.requestAnimationFrame(animatePong);
+    } else if (!pongActive && pongFrame) {
+      window.cancelAnimationFrame(pongFrame);
+      pongFrame = undefined;
+      pongLastTime = undefined;
+    }
+  });
+}
 
 const revealItems = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
