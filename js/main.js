@@ -35,8 +35,8 @@ menu?.querySelectorAll('a').forEach((link) => {
 });
 
 // El acento del hero recorre toda la portada como una pelota de ping-pong.
-// Se pausa fuera de pantalla y en móvil para preservar la fluidez del desplazamiento.
-if (hero && heroPong && !reduceMotion && !isMobileViewport) {
+// Se pausa fuera de pantalla y respeta la preferencia de reducir movimiento.
+if (hero && heroPong && !reduceMotion) {
   let pongFrame;
   let pongLastTime;
   let pongX = 0;
@@ -182,6 +182,14 @@ featureNext?.addEventListener('click', () => {
   activeFeatureSlide = (activeFeatureSlide + 1) % featureSlides.length;
   featureSlides.forEach((slide, index) => {
     slide.classList.toggle('is-active', index === activeFeatureSlide);
+  });
+});
+
+// En pantallas táctiles, las tarjetas alternan entre la portada luminosa y sus datos.
+document.querySelectorAll('.filter-card').forEach((card) => {
+  card.addEventListener('click', (event) => {
+    if (event.target.closest('a')) return;
+    card.classList.toggle('is-flipped');
   });
 });
 

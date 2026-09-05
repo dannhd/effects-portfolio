@@ -5441,6 +5441,10 @@ main .hero.section-shell {
   transform: rotateY(180deg);
 }
 
+.filter-card.is-flipped .filter-card__inner {
+  transform: rotateY(180deg);
+}
+
 .filter-card__back,
 .filter-card > .filter-card__inner > .filter-card__front {
   position: absolute;
@@ -5598,11 +5602,6 @@ main .hero.section-shell {
     width: min(100%, 18rem);
   }
 
-  .filter-card__inner,
-  .filter-card:hover .filter-card__inner,
-  .filter-card:focus-within .filter-card__inner {
-    transform: rotateY(180deg);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5734,6 +5733,29 @@ html {
   .site-footer {
     padding-bottom: max(3rem, calc(1.5rem + env(safe-area-inset-bottom)));
   }
+
+  .service-card.reveal {
+    transition: opacity .5s ease, transform .6s cubic-bezier(.22, .61, .36, 1);
+  }
+
+  .service-card.reveal:nth-child(2) {
+    transition-delay: .08s;
+  }
+
+  .service-card.reveal:nth-child(3) {
+    transition-delay: .16s;
+  }
+}
+
+/* El fondo se prolonga bajo la barra del navegador en iOS y Android. */
+html,
+body {
+  min-height: 100%;
+  background-color: #070907;
+}
+
+body {
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 @media (prefers-reduced-motion: reduce) {
