@@ -5436,9 +5436,13 @@ main .hero.section-shell {
   transition: transform 300ms ease;
 }
 
-.filter-card:hover .filter-card__inner,
-.filter-card:focus-within .filter-card__inner {
-  transform: rotateY(180deg);
+/* El giro al pasar el cursor solo existe donde realmente hay cursor.
+   Así evitamos que :hover quede fijado después de un toque en móvil. */
+@media (hover: hover) and (pointer: fine) {
+  .filter-card:hover .filter-card__inner,
+  .filter-card:focus-within .filter-card__inner {
+    transform: rotateY(180deg);
+  }
 }
 
 .filter-card.is-flipped .filter-card__inner {
@@ -5600,6 +5604,8 @@ main .hero.section-shell {
   .featured-effect-card,
   .effect-gallery-card {
     width: min(100%, 18rem);
+    cursor: pointer;
+    touch-action: manipulation;
   }
 
 }

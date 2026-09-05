@@ -185,10 +185,13 @@ featureNext?.addEventListener('click', () => {
   });
 });
 
-// En pantallas táctiles, las tarjetas alternan entre la portada luminosa y sus datos.
+// En móvil, cada toque alterna entre la portada luminosa y sus datos.
+// En escritorio se conserva el giro al pasar el cursor.
+const usesTouchCardInteraction = window.matchMedia('(hover: none), (pointer: coarse)');
+
 document.querySelectorAll('.filter-card').forEach((card) => {
   card.addEventListener('click', (event) => {
-    if (event.target.closest('a')) return;
+    if (!usesTouchCardInteraction.matches || event.target.closest('a')) return;
     card.classList.toggle('is-flipped');
   });
 });
