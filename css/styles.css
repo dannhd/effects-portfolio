@@ -5433,6 +5433,8 @@ main .hero.section-shell {
   border-radius: .45rem;
   box-shadow: 0 0 .75rem .08rem rgba(0, 0, 0, .76);
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform: rotateY(0deg);
   transition: transform 300ms ease;
 }
 
@@ -5465,6 +5467,7 @@ main .hero.section-shell {
 }
 
 .filter-card__back {
+  transform: rotateY(0deg) translateZ(.1px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -5526,7 +5529,7 @@ main .hero.section-shell {
   flex-direction: column;
   align-items: flex-start;
   padding: 1.15rem;
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(.1px);
   transform-origin: center;
   background: #151b17;
 }
@@ -5608,6 +5611,11 @@ main .hero.section-shell {
     touch-action: manipulation;
   }
 
+  /* En táctil la información se muestra en el mismo toque, sin que la
+     cara anterior pueda verse durante una transición 3D. */
+  .filter-card__inner {
+    transition: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -49,6 +49,31 @@ if (hero && heroPong && !reduceMotion) {
   let pongSpin = .11;
   let pongTargetSpin = .11;
   let pongActive = false;
+  const pongMaxScale = 1.22;
+
+  const getPongBounds = () => {
+    const heroWidth = hero.clientWidth;
+    const heroHeight = hero.clientHeight;
+    const pongWidth = heroPong.offsetWidth;
+    const pongHeight = heroPong.offsetHeight;
+    // Se reserva espacio para la deformación que ocurre al rebotar, para que
+    // el cuadrado completo nunca atraviese el borde visible del hero.
+    const horizontalInset = Math.min((pongWidth * (pongMaxScale - 1)) / 2, Math.max(0, (heroWidth - pongWidth) / 2));
+    const verticalInset = Math.min((pongHeight * (pongMaxScale - 1)) / 2, Math.max(0, (heroHeight - pongHeight) / 2));
+
+    return {
+      minX: horizontalInset,
+      maxX: Math.max(horizontalInset, heroWidth - pongWidth - horizontalInset),
+      minY: verticalInset,
+      maxY: Math.max(verticalInset, heroHeight - pongHeight - verticalInset),
+    };
+  };
+
+  const constrainPongToHero = () => {
+    const bounds = getPongBounds();
+    pongX = Math.min(bounds.maxX, Math.max(bounds.minX, pongX));
+    pongY = Math.min(bounds.maxY, Math.max(bounds.minY, pongY));
+  };
 
   const registerPongImpact = (axis, spinDirection) => {
     pongImpact = 1;
@@ -61,8 +86,7 @@ if (hero && heroPong && !reduceMotion) {
 
     const elapsed = Math.min(32, time - (pongLastTime ?? time));
     pongLastTime = time;
-    const maxX = Math.max(0, hero.clientWidth - heroPong.offsetWidth);
-    const maxY = Math.max(0, hero.clientHeight - heroPong.offsetHeight);
+    const { minX, maxX, minY, maxY } = getPongBounds();
     pongX += pongVelocityX * elapsed;
     pongY += pongVelocityY * elapsed;
 
@@ -70,8 +94,8 @@ if (hero && heroPong && !reduceMotion) {
       pongX = maxX;
       pongVelocityX *= -1;
       registerPongImpact('x', 1);
-    } else if (pongX <= 0) {
-      pongX = 0;
+    } else if (pongX <= minX) {
+      pongX = minX;
       pongVelocityX *= -1;
       registerPongImpact('x', -1);
     }
@@ -80,8 +104,8 @@ if (hero && heroPong && !reduceMotion) {
       pongY = maxY;
       pongVelocityY *= -1;
       registerPongImpact('y', -1);
-    } else if (pongY <= 0) {
-      pongY = 0;
+    } else if (pongY <= minY) {
+      pongY = minY;
       pongVelocityY *= -1;
       registerPongImpact('y', 1);
     }
@@ -110,6 +134,7 @@ if (hero && heroPong && !reduceMotion) {
   }, { threshold: .05 });
 
   pongObserver.observe(hero);
+  new ResizeObserver(constrainPongToHero).observe(hero);
   document.addEventListener('visibilitychange', () => {
     pongActive = !document.hidden && hero.getBoundingClientRect().bottom > 0 && hero.getBoundingClientRect().top < window.innerHeight;
     if (pongActive && !pongFrame) {
