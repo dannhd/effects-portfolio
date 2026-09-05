@@ -40,7 +40,7 @@ if (hero && heroPong && !reduceMotion && !isMobileViewport) {
   let pongFrame;
   let pongLastTime;
   let pongX = 0;
-  let pongY = hero.clientHeight * .18;
+  let pongY = hero.clientHeight * .2;
   let pongVelocityX = .36;
   let pongVelocityY = .24;
   let pongImpact = 0;
@@ -173,27 +173,6 @@ const statsCascadeObserver = new IntersectionObserver((entries) => {
 });
 
 statsCascades.forEach((section) => statsCascadeObserver.observe(section));
-
-const benefitCards = document.querySelectorAll('.benefit-card');
-benefitCards.forEach((card) => {
-  card.addEventListener('pointerenter', () => card.classList.remove('is-closing'));
-
-  card.addEventListener('pointerleave', (event) => {
-    const nextCard = event.relatedTarget instanceof Element
-      ? event.relatedTarget.closest('.benefit-card')
-      : null;
-
-    if (!card.classList.contains('benefit-card-content') || nextCard) {
-      card.classList.add('is-closing');
-    }
-  });
-
-  card.addEventListener('animationend', (event) => {
-    if (event.animationName === 'benefit-copy-conceal') {
-      card.classList.remove('is-closing');
-    }
-  });
-});
 
 const featureSlides = [...document.querySelectorAll('.feature-slide')];
 const featureNext = document.querySelector('.feature-next');

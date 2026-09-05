@@ -407,11 +407,6 @@ button {
   display: none;
 }
 
-/* Rejilla de fondo visible solo como acento visual del hero. */
-.hero-grid {
-  display: none;
-}
-
 /* Contenedor del contenido que se muestra por encima de la rejilla. */
 .hero-copy {
   position: relative;
@@ -3948,7 +3943,7 @@ main .hero.section-shell {
   display: flex;
   align-items: center;
   gap: .8rem;
-  color: #dfe8df;
+  color: #caff4d;
   font: 600 .95rem/1.15 var(--sans);
 }
 
@@ -3961,7 +3956,7 @@ main .hero.section-shell {
   border-radius: 50%;
   background: #caff4d;
   color: #0b130e;
-  box-shadow: 0 0 .9rem rgb(202 255 77 / 16%);
+  box-shadow: 0 0 .9rem rgba(175, 250, 1, 0.16);
 }
 
 .engagement-list span {
@@ -3971,7 +3966,7 @@ main .hero.section-shell {
 }
 
 .engagement-list b {
-  color: #caff4d;
+  color: #ffffff;
   font: 700 1.05rem/1 var(--sans);
   letter-spacing: -.05em;
 }
@@ -5077,6 +5072,7 @@ main .hero.section-shell {
 
 .hero-statement {
   max-width: 15ch;
+  margin-inline: auto;
   font-size: clamp(3rem, 5vw, 5.7rem);
   line-height: .92;
 }
@@ -5116,9 +5112,9 @@ main .hero.section-shell {
   border: 1px solid rgba(247, 255, 239, .42);
   border-radius: .45rem;
   background: var(--acid);
-  box-shadow: inset 0 1px rgba(255, 255, 255, .4);
-  filter: blur(.3px) drop-shadow(0 0 1.1rem rgba(215, 255, 95, .55));
-  opacity: .9;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .62), 0 0 1.1rem rgba(215, 255, 95, .72);
+  filter: blur(.18px) drop-shadow(0 0 1.8rem rgba(215, 255, 95, .95));
+  opacity: 1;
   pointer-events: none;
   will-change: transform, filter;
 }
@@ -5149,7 +5145,7 @@ main .hero.section-shell {
     top: 6.2rem;
     left: calc(50% - 1.15rem);
     width: 2.3rem;
-    opacity: .68;
+    opacity: .9;
     will-change: auto;
   }
 }
@@ -5641,4 +5637,111 @@ main .hero.section-shell {
   background: #071009;
   color: #091109;
   transform: none;
+}
+
+/* Compatibilidad móvil: Safari iOS, Chrome, Firefox y Arc. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (max-width: 780px) {
+  html {
+    scroll-padding-top: calc(5.5rem + env(safe-area-inset-top));
+  }
+
+  body {
+    overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .site-header {
+    top: 0;
+    width: 100%;
+    height: calc(4.5rem + env(safe-area-inset-top));
+    margin: 0;
+    padding: env(safe-area-inset-top) 1rem 0;
+    border-radius: 0;
+  }
+
+  .menu-toggle,
+  .site-nav a,
+  .button,
+  .filter-trial-button {
+    min-height: 44px;
+  }
+
+  .menu-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .site-nav {
+    right: max(.75rem, env(safe-area-inset-right));
+    left: max(.75rem, env(safe-area-inset-left));
+    width: auto;
+    max-height: calc(100dvh - 6.25rem - env(safe-area-inset-top));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .site-nav a {
+    display: flex;
+    align-items: center;
+    padding: .7rem .8rem;
+  }
+
+  .hero,
+  main .hero.section-shell {
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding-top: calc(6.5rem + env(safe-area-inset-top));
+    padding-bottom: max(2.5rem, env(safe-area-inset-bottom));
+  }
+
+  /* En móvil el contenido sigue el scroll principal, evitando secciones cortadas. */
+  .benefits .feature-carousel {
+    min-height: 0;
+    height: auto;
+    overflow: visible;
+  }
+
+  .benefits .statistics-slide {
+    position: relative;
+    inset: auto;
+    height: auto;
+    overflow: visible !important;
+  }
+
+  .benefits .results-panel,
+  .benefits .statistics-copy {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .services .service-card:hover,
+  .button:hover {
+    transform: none;
+  }
+
+  .contact {
+    padding-right: max(1.3rem, env(safe-area-inset-right));
+    padding-left: max(1.3rem, env(safe-area-inset-left));
+    padding-bottom: max(4.5rem, calc(2.5rem + env(safe-area-inset-bottom)));
+  }
+
+  .site-footer {
+    padding-bottom: max(3rem, calc(1.5rem + env(safe-area-inset-bottom)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
