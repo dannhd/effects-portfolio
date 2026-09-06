@@ -39,7 +39,7 @@
   --text: #f2f7f3;
   --muted: #a9b8b1;
   --acid: #d7ff5f;
-  --mint: #b7ffe1;
+  --mint: #d7ff5f;
   --mono: "Poppins Looplup", sans-serif;
   --sans: "Poppins Looplup", sans-serif;
   --heading: "Montserrat Looplup", sans-serif;
@@ -2154,7 +2154,7 @@ em {
   width: 5.4rem;
   height: 6.7rem;
   border-radius: 42% 42% 34% 34%;
-  background: linear-gradient(140deg, #effff4, #a6f8c7 45%, #55b875);
+  background: linear-gradient(140deg, #effff4, #d7ff5f 45%, #d7ff5f);
   box-shadow: inset -.55rem -.45rem .8rem rgba(9, 50, 28, .28), 0 1rem 1.5rem rgba(0, 0, 0, .3), 0 0 25px rgba(159, 255, 71, .3);
 }
 
@@ -2162,7 +2162,7 @@ em {
   width: 2.55rem;
   height: 2.55rem;
   margin-left: 5rem;
-  border: .7rem solid #b8ffcf;
+  border: .7rem solid #d7ff5f;
   border-left: 0;
   border-radius: 0 50% 50% 0;
 }
@@ -2172,7 +2172,7 @@ em {
   height: 6.3rem;
   border-radius: 1.2rem;
   transform: rotate(18deg);
-  background: linear-gradient(145deg, #e7ff89, #a7ef58 45%, #4ea265);
+  background: linear-gradient(145deg, #d7ff5f, #d7ff5f 45%, #d7ff5f);
 }
 
 .service-interactive .service-shape::after {
@@ -2189,7 +2189,7 @@ em {
   width: 6.7rem;
   height: 6.7rem;
   border-radius: 50%;
-  background: conic-gradient(from 30deg, #f2ffcd, #cfff47, #7eea9f, #f2ffcd);
+  background: conic-gradient(from 30deg, #d7ff5f, #d7ff5f, #d7ff5f, #d7ff5f);
 }
 
 .service-game .service-shape::after {
@@ -2885,7 +2885,7 @@ h1 { width: auto; text-align: left; font-size: clamp(4.6rem, 10vw, 9.5rem); line
   isolation: isolate;
   border: 1px solid rgba(226, 255, 213, .3);
   border-radius: .7rem;
-  background: radial-gradient(140% 185% at var(--kreathora-glow-x) var(--kreathora-glow-y), #081c12 0%, #16432c 38%, #5b8a48 61%, #caff4d 79%, #0b100b 100%);
+  background: radial-gradient(140% 185% at var(--kreathora-glow-x) var(--kreathora-glow-y), #081c12 0%, #16432c 38%, #5b8a48 61%, #d7ff5f 79%, #0b100b 100%);
   background-size: 175% 175%;
   background-position: 52% 86%;
   color: rgba(255, 255, 255, .96);
@@ -2915,7 +2915,7 @@ h1 { width: auto; text-align: left; font-size: clamp(4.6rem, 10vw, 9.5rem); line
   --kreathora-glow-y: 115%;
   background-position: 0% 65%;
   border-color: rgba(236, 255, 218, .58);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), inset 0 -1px 0 rgba(0, 0, 0, .22), 0 .7rem 1.7rem rgba(147, 255, 83, .19);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), inset 0 -1px 0 rgba(0, 0, 0, .22), 0 .7rem 1.7rem rgba(215, 255, 95, .19);
   transform: translateY(-2px);
 }
 
@@ -2929,7 +2929,7 @@ h1 { width: auto; text-align: left; font-size: clamp(4.6rem, 10vw, 9.5rem); line
 
 .site-header .header-cta,
 .hero-actions .button,
-.button-hero-secondary { background: radial-gradient(140% 185% at var(--kreathora-glow-x) var(--kreathora-glow-y), #081c12 0%, #16432c 38%, #5b8a48 61%, #caff4d 79%, #0b100b 100%); color: rgba(255, 255, 255, .96); }
+.button-hero-secondary { background: radial-gradient(140% 185% at var(--kreathora-glow-x) var(--kreathora-glow-y), #081c12 0%, #16432c 38%, #5b8a48 61%, #d7ff5f 79%, #0b100b 100%); color: rgba(255, 255, 255, .96); }
 
 /* El avance del carrusel es un control compacto, no un CTA de contenido. */
 .feature-next {
@@ -2954,7 +2954,7 @@ h1 { width: auto; text-align: left; font-size: clamp(4.6rem, 10vw, 9.5rem); line
 }
 
 .feature-next::before { display: none; }
-.feature-next:hover { transform: scale(1.08); background: #caff4d; border-color: #caff4d; color: #0a100a; box-shadow: 0 .55rem 1.35rem rgba(147, 255, 83, .2); }
+.feature-next:hover { transform: scale(1.08); background: #d7ff5f; border-color: #d7ff5f; color: #0a100a; box-shadow: 0 .55rem 1.35rem rgba(215, 255, 95, .2); }
 .feature-next:active { transform: scale(.96); }
 
 @media (prefers-reduced-motion:reduce) {
@@ -2996,7 +2996,7 @@ h1 { width: auto; text-align: left; font-size: clamp(4.6rem, 10vw, 9.5rem); line
 }
 
 .service-price {
-  color: #caff4d;
+  color: #d7ff5f;
 }
 
 @media (max-width: 780px) {
@@ -3409,7 +3409,7 @@ main .hero.section-shell {
 .stats-pile .card_title {
   position: static;
   margin-top: .8rem;
-  color: #caff4d;
+  color: #d7ff5f;
   font: 700 clamp(.85rem, 1.2vw, 1.15rem)/1.1 var(--sans);
   letter-spacing: .02em;
   text-shadow: none;
@@ -3469,7 +3469,7 @@ main .hero.section-shell {
 }
 
 .stats-cards .card:hover {
-  border-color: #caff4d;
+  border-color: #d7ff5f;
   transform: translateZ(10px) rotateX(20deg) rotateY(20deg);
   box-shadow: 20px 20px 38px rgb(8 10 9 / 64%), 0 0 1.5rem rgb(202 255 77 / 16%);
 }
@@ -3505,7 +3505,7 @@ main .hero.section-shell {
   position: absolute;
   top: 1.25rem;
   left: 1.4rem;
-  color: #caff4d;
+  color: #d7ff5f;
   font: 600 .62rem/1 var(--mono);
   letter-spacing: .13em;
   transform: translateZ(22px);
@@ -3604,7 +3604,7 @@ main .hero.section-shell {
 }
 
 .stats-cards .card:hover {
-  border-color: #caff4d;
+  border-color: #d7ff5f;
   transform: translateZ(10px) rotateX(20deg) rotateY(20deg);
   box-shadow: 0 0 1.5rem rgb(202 255 77 / 16%);
 }
@@ -3613,7 +3613,7 @@ main .hero.section-shell {
   position: absolute;
   top: 1rem;
   left: 1rem;
-  color: #caff4d;
+  color: #d7ff5f;
   font: 600 .52rem/1 var(--mono);
   letter-spacing: .11em;
   transform: translateZ(24px);
@@ -3674,7 +3674,7 @@ main .hero.section-shell {
   border-radius: 10px;
   padding: 1px;
   position: relative;
-  background: radial-gradient(circle 230px at 0% 0%, #caff4d, #0c0d0d);
+  background: radial-gradient(circle 230px at 0% 0%, #d7ff5f, #0c0d0d);
 }
 
 .views-stat-card .dot {
@@ -3685,8 +3685,8 @@ main .hero.section-shell {
   top: 10%;
   z-index: 2;
   border-radius: 100px;
-  background-color: #caff4d;
-  box-shadow: 0 0 10px #caff4d;
+  background-color: #d7ff5f;
+  box-shadow: 0 0 10px #d7ff5f;
   animation: moveDot 6s linear infinite;
 }
 
@@ -3721,9 +3721,9 @@ main .hero.section-shell {
   top: 0;
   left: 0;
   border-radius: 100px;
-  background-color: #caff4d;
+  background-color: #d7ff5f;
   opacity: .3;
-  box-shadow: 0 0 50px #caff4d;
+  box-shadow: 0 0 50px #d7ff5f;
   filter: blur(10px);
   transform: rotate(40deg);
   transform-origin: 10%;
@@ -3733,13 +3733,13 @@ main .hero.section-shell {
   color: transparent;
   font-size: clamp(2.15rem, 3vw, 3rem);
   font-weight: bolder;
-  background: linear-gradient(45deg, #526f43 4%, #f4f6f1, #caff4d);
+  background: linear-gradient(45deg, #526f43 4%, #f4f6f1, #d7ff5f);
   background-clip: text;
   -webkit-background-clip: text;
 }
 
 .views-stat-card .views-label {
-  color: #caff4d;
+  color: #d7ff5f;
   font: 700 1.1rem/1 var(--mono);
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -3754,7 +3754,7 @@ main .hero.section-shell {
 
 .views-stat-card .topl {
   top: 10%;
-  background: linear-gradient(90deg, #caff4d 30%, #1d2d1f 70%);
+  background: linear-gradient(90deg, #d7ff5f 30%, #1d2d1f 70%);
 }
 
 .views-stat-card .bottoml { bottom: 10%; }
@@ -3783,7 +3783,7 @@ main .hero.section-shell {
 /* Recuadro informativo inspirado en la referencia, llevado a la paleta Kreathora. */
 .result-card {
   --border-radius: .75rem;
-  --primary-color: #caff4d;
+  --primary-color: #d7ff5f;
   --secondary-color: #c7d3c8;
   width: 210px;
   min-height: 190px;
@@ -3834,7 +3834,7 @@ main .hero.section-shell {
 }
 
 .result-card .result-metrics b {
-  color: #caff4d;
+  color: #d7ff5f;
   font: 700 .74rem/1 var(--sans);
   letter-spacing: -.05em;
 }
@@ -3896,7 +3896,7 @@ main .hero.section-shell {
   display: flex;
   align-items: center;
   gap: .8rem;
-  color: #caff4d;
+  color: #d7ff5f;
   font: 600 .95rem/1.15 var(--sans);
 }
 
@@ -3907,7 +3907,7 @@ main .hero.section-shell {
   flex: 0 0 auto;
   display: block;
   border-radius: 50%;
-  background: #caff4d;
+  background: #d7ff5f;
   color: #0b130e;
   box-shadow: 0 0 .9rem rgba(175, 250, 1, 0.16);
 }
@@ -3946,7 +3946,7 @@ main .hero.section-shell {
   flex: 0 0 auto;
   border: 1px solid rgb(202 255 77 / 30%);
   border-radius: 50%;
-  color: #caff4d;
+  color: #d7ff5f;
   background: rgb(202 255 77 / 5%);
 }
 
@@ -3957,7 +3957,7 @@ main .hero.section-shell {
 
 .stats-impact h3 {
   margin: 0;
-  color: #caff4d;
+  color: #d7ff5f;
   font: 700 .86rem/1 var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -4011,7 +4011,7 @@ main .hero.section-shell {
   opacity: .62;
   background-image:
     repeating-linear-gradient(100deg, rgb(202 255 77 / 24%) 0%, rgb(202 255 77 / 24%) 7%, transparent 10%, transparent 12%, rgb(202 255 77 / 24%) 16%),
-    repeating-linear-gradient(100deg, #244f35 10%, #caff4d 15%, #244f35 20%, #72d68c 25%, #244f35 30%);
+    repeating-linear-gradient(100deg, #244f35 10%, #d7ff5f 15%, #244f35 20%, #d7ff5f 25%, #244f35 30%);
   background-size: 300% 200%;
   background-position: 50% 50%;
   filter: blur(10px) saturate(165%);
@@ -4022,7 +4022,7 @@ main .hero.section-shell {
 .stats-aurora-overlay {
   background-image:
     repeating-linear-gradient(100deg, rgb(202 255 77 / 18%) 0%, rgb(202 255 77 / 18%) 7%, transparent 10%, transparent 12%, rgb(202 255 77 / 18%) 16%),
-    repeating-linear-gradient(100deg, #5e9e63 10%, #dfff8a 15%, #5e9e63 20%, #8de8b1 25%, #5e9e63 30%);
+    repeating-linear-gradient(100deg, #5e9e63 10%, #d7ff5f 15%, #5e9e63 20%, #d7ff5f 25%, #5e9e63 30%);
   background-size: 200% 100%;
   mix-blend-mode: screen;
   animation: stats-aurora-shift 12s ease-in-out infinite alternate;
@@ -4402,7 +4402,7 @@ main .hero.section-shell {
 .featured-effect-copy small {
   display: block;
   margin-bottom: .45rem;
-  color: #caff4d;
+  color: #d7ff5f;
   font: 700 .62rem/1 var(--mono);
   letter-spacing: .11em;
   text-transform: uppercase;
@@ -4438,7 +4438,7 @@ main .hero.section-shell {
 }
 
 .featured-effect-metrics b {
-  color: #caff4d;
+  color: #d7ff5f;
   font: 700 .83rem/1 var(--sans);
   letter-spacing: -.04em;
 }
@@ -4451,7 +4451,7 @@ main .hero.section-shell {
   border: 1px solid rgb(202 255 77 / 55%);
   border-radius: .5rem;
   color: #11180e;
-  background: #caff4d;
+  background: #d7ff5f;
   font: 700 .63rem/1 var(--mono);
   letter-spacing: .07em;
   text-decoration: none;
@@ -4460,7 +4460,7 @@ main .hero.section-shell {
 }
 
 .featured-effect-copy a:hover {
-  background: #e2ff89;
+  background: #d7ff5f;
   transform: translateY(-2px);
 }
 
@@ -4530,7 +4530,7 @@ main .hero.section-shell {
 .effect-gallery-copy small {
   display: block;
   margin-bottom: .35rem;
-  color: #caff4d;
+  color: #d7ff5f;
   font: 700 .53rem/1 var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -4558,7 +4558,7 @@ main .hero.section-shell {
 }
 
 .effect-gallery-metrics b {
-  color: #caff4d;
+  color: #d7ff5f;
   font: 700 .72rem/1 var(--sans);
   letter-spacing: -.04em;
 }
@@ -4938,7 +4938,7 @@ main .hero.section-shell {
 .hero-actions .button.button-hero-secondary {
   --kreathora-glow-x: 42%;
   --kreathora-glow-y: 145%;
-  background: radial-gradient(140% 185% at var(--kreathora-glow-x) var(--kreathora-glow-y), #081c12 0%, #16432c 38%, #5b8a48 61%, #caff4d 79%, #0b100b 100%) !important;
+  background: radial-gradient(140% 185% at var(--kreathora-glow-x) var(--kreathora-glow-y), #081c12 0%, #16432c 38%, #5b8a48 61%, #d7ff5f 79%, #0b100b 100%) !important;
   background-size: 175% 175% !important;
   background-position: 52% 86% !important;
   color: rgba(255, 255, 255, .96) !important;
@@ -4950,7 +4950,7 @@ main .hero.section-shell {
   --kreathora-glow-y: 115%;
   background-position: 0% 65% !important;
   border-color: rgba(236, 255, 218, .58);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), inset 0 -1px 0 rgba(0, 0, 0, .22), 0 .7rem 1.7rem rgba(147, 255, 83, .19);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), inset 0 -1px 0 rgba(0, 0, 0, .22), 0 .7rem 1.7rem rgba(215, 255, 95, .19);
   transform: translateY(-2px);
 }
 
@@ -5371,7 +5371,7 @@ main .hero.section-shell {
   z-index: 0;
   width: 76%;
   height: 160%;
-  background: linear-gradient(90deg, transparent, var(--acid), #8dff56, var(--acid), transparent);
+  background: linear-gradient(90deg, transparent, var(--acid), #d7ff5f, var(--acid), transparent);
   animation: filter-card-border-rotation 5s linear infinite;
 }
 
