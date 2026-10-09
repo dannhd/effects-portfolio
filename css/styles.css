@@ -3008,6 +3008,156 @@ h1 { width: auto; text-align: left; font-size: clamp(4.6rem, 10vw, 9.5rem); line
   }
 }
 
+/* Video promocional: pieza principal del inicio, junto al mensaje de valor. */
+main .hero.section-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(19rem, .85fr);
+  gap: clamp(2.5rem, 6vw, 7rem);
+  align-items: center;
+  min-height: 100svh;
+  padding-top: clamp(7.5rem, 12vh, 10rem);
+  padding-bottom: clamp(3rem, 7vh, 6rem);
+}
+
+.hero-copy-centered,
+.hero-brand-lockup,
+.hero-actions {
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.hero-text-lockup {
+  width: 100%;
+}
+
+.hero-statement,
+.hero-description {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+
+.hero-promo-showcase {
+  position: relative;
+  z-index: 2;
+  justify-self: center;
+  width: min(100%, 18.5rem);
+  aspect-ratio: 536 / 1010;
+  isolation: isolate;
+}
+
+.hero-promo-glow {
+  position: absolute;
+  z-index: -1;
+  inset: 12% -18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(215, 255, 95, .2), rgba(215, 255, 95, .06) 44%, transparent 72%);
+  filter: blur(2rem);
+  pointer-events: none;
+}
+
+.hero-phone-player {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2rem 3.6rem rgba(0, 0, 0, .54)) drop-shadow(0 0 1.8rem rgba(215, 255, 95, .09));
+}
+
+.hero-phone-frame {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.hero-promo-video,
+.hero-promo-video-bg {
+  position: absolute;
+  top: 3.2%;
+  right: 8.5%;
+  bottom: 3.6%;
+  left: 8.5%;
+  display: block;
+  width: 83%;
+  height: 93.2%;
+  object-position: center center;
+  overflow: hidden;
+  border: 0;
+  border-radius: 11.5% / 5.2%;
+  background: #000;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-promo-video-bg {
+  z-index: 1;
+  object-fit: cover;
+  filter: blur(.45rem) brightness(.42) saturate(.8);
+  transform: scale(1.025);
+}
+
+.hero-promo-video {
+  z-index: 2;
+  object-fit: contain;
+}
+
+.hero-phone-island {
+  display: none;
+}
+
+.hero-phone-island::after {
+  content: "";
+  position: absolute;
+  right: 9%;
+  top: 50%;
+  width: .48rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, #5687a5 0 10%, #18364b 22%, #050709 64%);
+  box-shadow: 0 0 .18rem rgba(89, 145, 181, .55);
+  transform: translateY(-50%);
+}
+
+@media (max-width: 900px) {
+  main .hero.section-shell {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+    min-height: auto;
+    padding-top: 8rem;
+  }
+
+  .hero-copy-centered,
+  .hero-brand-lockup,
+  .hero-actions {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-statement,
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .hero-promo-showcase {
+    width: min(78vw, 21rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-promo-video {
+    animation: none;
+  }
+}
+
 /* Métrica principal sin tarjeta: cifra y subtítulo directamente sobre el fondo. */
 .views-stat-card {
   width: auto;
@@ -5699,5 +5849,204 @@ body {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
+  }
+}
+
+/* Nuevos puentes editoriales entre resultados, experiencias y servicios. */
+.feature-slide .effects-gallery-heading {
+  width: 100%;
+  max-width: 24ch;
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+  color: #f4f6f1;
+  font-size: clamp(2rem, 3vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -.05em;
+  text-wrap: balance;
+}
+
+.effects-gallery-heading + .effects-gallery {
+  margin-top: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.services-heading > h2 {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  font-size: clamp(2.25rem, 3vw, 3.6rem);
+  line-height: 1;
+  white-space: nowrap;
+  text-wrap: balance;
+}
+
+.services-heading {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.services-intro {
+  max-width: 52rem;
+  margin: 0;
+  color: rgba(244, 246, 241, .72);
+  font-size: clamp(1rem, 1.45vw, 1.25rem);
+  line-height: 1.55;
+}
+
+@media (min-width: 781px) {
+  .services .service-scroller {
+    margin-top: 4rem;
+  }
+}
+
+@media (min-width: 781px) and (hover: hover) {
+  .services .service-card:hover {
+    z-index: 2;
+    transform: translateY(-.75rem) scale(1.04);
+    box-shadow:
+      25px 25px 48px rgb(8 8 8),
+      -18px -18px 38px rgb(58 58 58),
+      0 0 42px rgb(215 255 95 / 12%);
+  }
+}
+
+.benefits,
+.services {
+  scroll-margin-top: 6rem;
+}
+
+.benefits-pretitle {
+  font-size: clamp(2.7rem, 4.3vw, 4.8rem);
+  line-height: .96;
+}
+
+.hero-statement {
+  max-width: 24ch;
+  font-size: clamp(2.5rem, 3.4vw, 3.9rem);
+  line-height: 1;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.hero-text-lockup {
+  width: min(100%, 60rem);
+}
+
+@media (min-width: 1041px) {
+  .benefits .feature-carousel {
+    min-height: 52rem;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 780px) {
+  .feature-slide .effects-gallery-heading {
+    max-width: 18ch;
+    font-size: clamp(1.8rem, 9vw, 2.7rem);
+  }
+
+  .benefits-pretitle {
+    font-size: clamp(2.4rem, 10.5vw, 3.4rem);
+  }
+
+  .hero-statement {
+    max-width: 18ch;
+    font-size: clamp(2.05rem, 7.8vw, 2.7rem);
+  }
+
+  .services-heading > h2 {
+    max-width: 15ch;
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+    white-space: normal;
+  }
+
+  .services-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .services-intro {
+    margin-top: 0;
+  }
+}
+
+/* El video aprobado comparte el primer impacto con la propuesta de valor. */
+main .hero.section-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(19rem, .85fr);
+  gap: clamp(2.5rem, 6vw, 7rem);
+  align-items: center;
+  min-height: 100svh;
+  padding-top: clamp(7.5rem, 12vh, 10rem);
+  padding-bottom: clamp(3rem, 7vh, 6rem);
+}
+
+main .hero.section-shell .hero-copy-centered,
+main .hero.section-shell .hero-brand-lockup,
+main .hero.section-shell .hero-actions {
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+main .hero.section-shell .hero-text-lockup {
+  width: 100%;
+}
+
+main .hero.section-shell .hero-statement,
+main .hero.section-shell .hero-description {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+
+main .hero.section-shell .hero-copy {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  justify-self: end;
+  width: min(100%, 42rem);
+}
+
+main .hero.section-shell .hero-promo-showcase {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: start;
+}
+
+@media (max-width: 900px) {
+  main .hero.section-shell {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+    min-height: auto;
+    padding-top: 8rem;
+  }
+
+  main .hero.section-shell .hero-copy-centered,
+  main .hero.section-shell .hero-brand-lockup,
+  main .hero.section-shell .hero-actions {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  main .hero.section-shell .hero-statement,
+  main .hero.section-shell .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  main .hero.section-shell .hero-statement {
+    width: 100%;
+    max-width: 12ch;
+    font-size: clamp(2rem, 8.8vw, 2.75rem);
+  }
+
+  main .hero.section-shell .hero-copy,
+  main .hero.section-shell .hero-promo-showcase {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: center;
   }
 }
